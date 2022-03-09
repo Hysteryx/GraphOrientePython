@@ -74,11 +74,13 @@ class GrapheOriente():
         return matrice
 
     def __str__(self) -> str:
-        mess = ''
+        mess = 'digraph G {\n'
         if self.graph == {}:
             return "Le Graph Oriente ne contient aucun sommet !"
         for i in self.graph.keys():
-            mess += f"{i}-->{self.graph[i]}\n"
+            for k in range(len(self.graph[i])):
+                mess += f"\"{i}\" -> \"{self.graph[i][k]}\"\n"
+        mess += '}'
         return mess 
 
 
