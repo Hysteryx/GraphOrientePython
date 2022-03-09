@@ -1,7 +1,3 @@
-
-from operator import index
-
-
 class GrapheOriente():
 
 
