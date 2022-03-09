@@ -12,12 +12,15 @@ class GrapheOriente():
             self.graph = graph
 
     def get_dico(self):
+        '''Renvoie le dictionnaire de manière brut'''
         return self.graph
 
     def ajouter_sommet(self, sommet):
+        '''Ajoute une sommet dans le graphe'''
         self.graph[sommet] = [] 
     
     def supprimer_sommet(self, sommet):
+        '''supprime un sommet et ses liaisons (arc) dans le graphe'''
         try:
             all = self.predecesseurs(sommet)
             for i in range(len(all)):
@@ -27,6 +30,7 @@ class GrapheOriente():
             print("Sommet introuvable, merci de vérifier l'ortographe")
 
     def ajouter_arc(self, s1, s2):
+        '''Ajoute une liaison dite arc entre deux sommets déjà existants'''
         try: 
             new = [self.graph[s1]][0]
             new.append(s2)
@@ -35,6 +39,7 @@ class GrapheOriente():
             print('Un des deux sommets spécifiés ne semble pas exister !')
 
     def supprimer_arc(self,s1,s2):
+        '''Supprime un arc'''
         try:
             new = [self.graph[s1]][0]
             del new[new.index(s2)]
@@ -42,25 +47,30 @@ class GrapheOriente():
            print('Un des deux sommets spécifiés ne semble pas exister !')
 
     def sommets(self):
+        '''Renvoie la liste des tous les sommets'''
         sommets = []
         for i in self.graph.keys():
             sommets.append(i)
         return sommets
 
     def nb_sommets(self):
+        '''Renvoie le nombre total de sommets'''
         return len(self.sommets())
 
     def nb_arcs(self):
+        '''Renvoie le nombre total d'arcs'''
         cpt = 0 
         for i in self.graph.keys():
             cpt += len(self.graph[i])
         return cpt 
 
     def successeurs(self, sommet):
+        '''Renvoie les successeurs d'un sommet spécifié'''
         try: return self.graph[sommet]
         except: print("Le sommet spécifié n'existe pas !")
 
     def predecesseurs(self, sommet):
+        '''Renvoie les prédecesseurs d'un sommet spécifié'''
         try:
             l = []
             for v in self.graph.keys():
@@ -71,6 +81,7 @@ class GrapheOriente():
             print("Le sommet spécifié n'existe pas !")
 
     def matrice(self):
+        '''Renvoie la matrice du graph (binaire)'''
         sommets = self.sommets()
         matrice = [] 
         for key in self.graph:
@@ -92,6 +103,7 @@ class GrapheOriente():
             self.ajouter_sommet(alpha[i].upper())
 
     def __str__(self) -> str:
+        '''Renvoie le code a inserer dans : http://www.webgraphviz.com/'''
         mess = 'digraph G {\n'
         if self.graph == {}:
             return "Le Graph Oriente ne contient aucun sommet !"
@@ -161,4 +173,23 @@ if __name__ == '__main__':
     destroy.supprimer_sommet('rienzoifn')
     destroy.supprimer_arc('le néant',"un autre néant")
     destroy.successeurs('nimp')
-    destroy.predecesseurs('nimp') 
+    destroy.predecesseurs('nimp')
+    print('\n')
+    destroy.genereSommets(10)
+    destroy.supprimer_sommet('A')
+    print(destroy.get_dico()) 
+    print("\nAjout d'un graph directement :\n")
+    jai_deja_un_dico = GrapheOriente({'A':['B','C','D'],
+                                            'B':['A','D'],
+                                            'C':['A','D','E'],
+                                            'D':['A','B','C','E','F'],
+                                            'E':['C','D','F'],
+                                            'F':['D','E']})
+    print(jai_deja_un_dico)
+    print(jai_deja_un_dico.get_dico())
+    print(jai_deja_un_dico.sommets())
+    print(jai_deja_un_dico.nb_arcs())
+    print(jai_deja_un_dico.nb_sommets())
+    jai_deja_un_dico.supprimer_sommet('A')
+    print(jai_deja_un_dico)
+    print(jai_deja_un_dico.get_dico())
