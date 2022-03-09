@@ -54,10 +54,14 @@ class GrapheOriente():
         return cpt 
 
     def successeurs(self, sommet):
-        pass 
+        return self.graph[sommet]
 
     def predecesseurs(self, sommet):
-        pass 
+        l = []
+        for v in self.graph.keys():
+            if sommet in self.graph[v]:
+                l.append(v)
+        return l 
 
     def matrice(self):
         sommets = self.sommets()
@@ -72,6 +76,13 @@ class GrapheOriente():
                     tab.append(0)
             matrice.append(tab)
         return matrice
+    
+    def genereSommets(self, nb=10):
+        """Cette méthode écrase des sommets si ils sont déjà existants !"""
+        alpha = "abcdefghijklmnopqrstuvwxyz"
+        if nb > 26: nb = 26 
+        for i in range(nb):
+            self.ajouter_sommet(alpha[i].upper())
 
     def __str__(self) -> str:
         mess = 'digraph G {\n'
@@ -86,23 +97,13 @@ class GrapheOriente():
 
 if __name__ == '__main__':
     A = GrapheOriente()
-    """
-    A.ajouter_sommet('test')
-    print(A)
-    A.get_dico() #mettre un print si ça s'affiche pas sur vscode 
-    A.supprimer_sommet('test')
-    print(A)
-    """
-    A.ajouter_sommet('A')
-    A.ajouter_sommet('B')
-    A.ajouter_arc('A','B')
-    print(A)
-    A.ajouter_sommet('C')
-    A.ajouter_arc('A','C')
-    print(A)
-    A.supprimer_arc('A','C')
-    print(A)
-    print(A.sommets())
-    print(A.nb_sommets())
-    print(A.nb_arcs())
-    print(A.matrice())
+    A.genereSommets()
+    print(A.get_dico())
+    A.ajouter_arc('B', 'A')
+    A.ajouter_arc('C', 'A')
+    A.ajouter_arc('B','C')
+    A.ajouter_arc('D', 'A')
+    print(A.successeurs('B'))
+
+
+    
