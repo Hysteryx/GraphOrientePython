@@ -1,3 +1,4 @@
+#utiliser webbrowser et un autre truc pour ouvrir avec le lien le code direct dedans
 class GrapheOriente():
 
 
