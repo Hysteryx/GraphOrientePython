@@ -3,10 +3,10 @@ class GrapheOriente():
 
 
     def __init__(self, graph = {}) -> None:
-        if graph == {}:
+        if graph == {}: #Si aucun graph n'est mit en argument 
             self.graph = {}
         else:
-            self.graph = graph
+            self.graph = graph #sinon le graph indiquer et mit en arg 
 
     def get_dico(self):
         '''Renvoie le dictionnaire de manière brut'''
