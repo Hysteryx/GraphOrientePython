@@ -95,7 +95,7 @@ class GrapheOriente():
     def genereSommets(self, nb=10):
         """Cette méthode écrase des sommets si ils sont déjà existants !"""
         alpha = "abcdefghijklmnopqrstuvwxyz"
-        if nb > 26: nb = 26 
+        if nb > 26: nb = 26 #limite pour aucune raison 
         for i in range(nb):
             self.ajouter_sommet(alpha[i].upper())
 
