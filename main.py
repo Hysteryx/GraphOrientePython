@@ -105,11 +105,12 @@ class GrapheOriente():
         if self.graph == {}:
             return "Le Graph Oriente ne contient aucun sommet !"
         for i in self.graph.keys():
+            if self.graph[i] == []:
+                mess += (f'"{i}"\n')
             for k in range(len(self.graph[i])):
                 mess += f"\"{i}\" -> \"{self.graph[i][k]}\"\n"
         mess += '}'
         return mess 
-
 
 if __name__ == '__main__':
     pause, skip = False, False
