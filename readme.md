@@ -19,3 +19,5 @@
 @Hysteryx 
 Hysteryx.#4614
 https://github.com/Hysteryx
+
+Cette ressource permet d'organiser des données de la manière d'un graphe orienté, pour plus d'information au sujet de cette structure de donnée : https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9

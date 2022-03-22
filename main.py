@@ -1,6 +1,4 @@
-#utiliser webbrowser et un autre truc pour ouvrir avec le lien le code direct dedans
 class GrapheOriente():
-
 
     def __init__(self, graph = {}) -> None:
         if graph == {}: #Si aucun graph n'est mit en argument 
